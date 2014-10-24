@@ -34,10 +34,14 @@ class Alumno extends Entity {
 	}
 	
 	@PersistentField
-	def getNombre() {
+	def String getNombre() {
 		_nombre
 	}
 	
+	def void setNombre(String unNombre) {
+		_nombre = unNombre
+	} 
+
 	@Relation
 	def getCursadas() {
 		_cursadas

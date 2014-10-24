@@ -1,6 +1,6 @@
 package org.uqbar.alumnos.domain
 
-import org.uqbar.alumnos.home.RepoAlumnos
+import org.uqbar.alumnos.repos.RepoAlumnos
 import uqbar.arena.persistence.Configuration
 
 class App {
@@ -18,7 +18,9 @@ class App {
 		println("¿Qué alumnos cursan Design?")
 		println
 		val alumnoExample = new Alumno => [
-			cursadas = newArrayList(new Cursada("Design"))
+			// ma perché? averiguaré
+			nombre = "Leandro Barragan"
+			//cursadas = newArrayList(new Cursada("Design"))
 		]
 		RepoAlumnos.instance.searchByExample(alumnoExample)
 	}
