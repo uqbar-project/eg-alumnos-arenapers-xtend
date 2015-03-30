@@ -2,6 +2,7 @@ package org.uqbar.alumnos.domain
 
 import java.util.ArrayList
 import java.util.List
+import org.eclipse.xtend.lib.annotations.Accessors
 import org.uqbar.commons.model.Entity
 import org.uqbar.commons.utils.Observable
 import org.uqbar.commons.utils.Transactional
@@ -12,11 +13,12 @@ import uqbar.arena.persistence.annotations.Relation
 @Transactional
 @Observable
 @PersistentClass
+@Accessors
 class Alumno extends Entity {
 	
-	@Property String nombre
-	@Property List<Cursada> cursadas
-	@Property Alumno.TipoAlumno tipoAlumno
+	String nombre
+	List<Cursada> cursadas
+	Alumno.TipoAlumno tipoAlumno
 	
 	enum TipoAlumno {
 		ESTUDIOSO, VAGONETA, COMUN
@@ -30,21 +32,21 @@ class Alumno extends Entity {
 	
 	@PersistentField
 	def getTipoAlumno() {
-		_tipoAlumno
+		tipoAlumno
 	}
 	
 	@PersistentField
 	def String getNombre() {
-		_nombre
+		nombre
 	}
 	
 	def void setNombre(String unNombre) {
-		_nombre = unNombre
+		nombre = unNombre
 	} 
 
 	@Relation
 	def getCursadas() {
-		_cursadas
+		cursadas
 	}
 
 	override toString() {

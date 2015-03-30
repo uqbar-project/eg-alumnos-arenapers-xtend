@@ -1,5 +1,6 @@
 package org.uqbar.alumnos.domain
 
+import org.eclipse.xtend.lib.annotations.Accessors
 import org.uqbar.commons.model.Entity
 import org.uqbar.commons.utils.Observable
 import org.uqbar.commons.utils.Transactional
@@ -9,10 +10,11 @@ import uqbar.arena.persistence.annotations.PersistentField
 @Transactional
 @Observable
 @PersistentClass
+@Accessors
 class Materia extends Entity {
 
-	@Property String nombre
-	@Property int anio
+	String nombre
+	int anio
 
 	new() {
 		
@@ -25,12 +27,12 @@ class Materia extends Entity {
 	
 	@PersistentField
 	def getNombre() {
-		_nombre
+		nombre
 	}
 	
 	@PersistentField
 	def getAnio() {
-		_anio
+		anio
 	}
 	
 }
