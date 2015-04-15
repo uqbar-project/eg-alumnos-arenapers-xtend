@@ -13,8 +13,8 @@ import uqbar.arena.persistence.annotations.PersistentField
 @Accessors
 class Materia extends Entity {
 
-	String nombre
-	int anio
+	@PersistentField String nombre
+	@PersistentField int anio
 
 	new() {
 		
@@ -24,15 +24,5 @@ class Materia extends Entity {
 		nombre = unNombre
 		anio = unAnio	
 	}	
-	
-	@PersistentField
-	def getNombre() {
-		nombre
-	}
-	
-	@PersistentField
-	def getAnio() {
-		anio
-	}
 	
 }

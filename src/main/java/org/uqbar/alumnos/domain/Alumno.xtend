@@ -16,9 +16,9 @@ import uqbar.arena.persistence.annotations.Relation
 @Accessors
 class Alumno extends Entity {
 	
-	String nombre
-	List<Cursada> cursadas
-	Alumno.TipoAlumno tipoAlumno
+	@PersistentField String nombre
+	@Relation List<Cursada> cursadas
+	@PersistentField Alumno.TipoAlumno tipoAlumno
 	
 	enum TipoAlumno {
 		ESTUDIOSO, VAGONETA, COMUN
@@ -30,25 +30,14 @@ class Alumno extends Entity {
 		tipoAlumno = Alumno.TipoAlumno.COMUN	
 	}
 	
-	@PersistentField
-	def getTipoAlumno() {
-		tipoAlumno
-	}
-	
-	@PersistentField
-	def String getNombre() {
-		nombre
-	}
-	
-	def void setNombre(String unNombre) {
-		nombre = unNombre
-	} 
-
-	@Relation
 	def getCursadas() {
 		cursadas
 	}
 
+	def esEstudioso() {
+		tipoAlumno.equals(Alumno.TipoAlumno.ESTUDIOSO)
+	}
+	
 	override toString() {
 		nombre + " (" + tipoAlumno + ") - cursando " + cursadas.map [ it.materia ].map [ it.nombre ]
 	}

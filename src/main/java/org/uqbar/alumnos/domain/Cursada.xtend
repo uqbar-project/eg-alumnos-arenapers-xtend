@@ -14,8 +14,8 @@ import uqbar.arena.persistence.annotations.Relation
 @Accessors
 class Cursada extends Entity {
 
-	String comision
-	Materia materia
+	@PersistentField String comision
+	@Relation Materia materia
 	
 	new(String nombreMateria) {
 		materia = new Materia(nombreMateria, 0)
@@ -23,16 +23,6 @@ class Cursada extends Entity {
 	
 	new() {
 		
-	}
-	
-	@PersistentField
-	def getComision() {
-		comision
-	}
-	
-	@Relation
-	def getMateria() {
-		materia
 	}
 	
 }

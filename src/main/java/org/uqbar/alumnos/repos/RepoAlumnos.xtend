@@ -23,14 +23,11 @@ class RepoAlumnos extends PersistentHome<Alumno> {
 	 */
 	
 	def createIfNotExists(Alumno alumno) {
-		println("Busco al alumno")
 		var alumnoDB = this.get(alumno.nombre)
 		if (alumnoDB == null) {
-			println("No existe, creo al alumno")
 			this.create(alumno)
 			alumnoDB = alumno
 		} else {
-			println("Ya existe el alumno")
 		}
 		alumnoDB
 	}
@@ -48,7 +45,6 @@ class RepoAlumnos extends PersistentHome<Alumno> {
 		// Hago la búsqueda directamente en el grafo que está en el disco
 		val alumno = new Alumno => [
 			nombre = unNombre
-			cursadas = null  // fundamental para que no tire el error "No se puede hacer query by example con relaciones entre objetos."
 		]
 		val alumnos = searchByExample(alumno)
 		if (alumnos.isEmpty) {
